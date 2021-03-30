@@ -4,7 +4,7 @@ workflows:
         scripts:
             - cd android && chmod +x gradlew && ./gradlew assembleDebug
         artifacts:
-            - android/fastmixer/build/outputs/**/*.apk
+            - app/build/outputs/**/**/*.apk
         publishing:
             email:
                recipients:
