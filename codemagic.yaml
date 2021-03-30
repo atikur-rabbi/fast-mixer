@@ -1,11 +1,15 @@
 workflows:
-  cordova:
-    name: Apache Cordova
-    environment:
-      vars:
-        GRADLE_PATH: /Users/builder/programs/gradle-5.6.4/bin
-    scripts:
-     - sudo npm install -g cordova
-     - npm install
-     - cordova platform add android
-     - PATH=$PATH:$GRADLE_PATH cordova build android
+    android-app:
+        name: fast-mixer
+        scripts:
+            - cd android && chmod +x gradlew && ./gradlew assembleDebug
+        artifacts:
+            - android/fastmixer/build/outputs/**/*.apk
+        publishing:
+            email:
+               recipients:
+                   - msawon94@gmail.com
+            github_releases:
+                prerelease: true
+                artifact_patterns:
+                   - '*.apk'
